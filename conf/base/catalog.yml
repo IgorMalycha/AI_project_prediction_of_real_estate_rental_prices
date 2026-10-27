@@ -1,0 +1,78 @@
+raw_data:
+  type: kedro_datasets.partitions.partitioned_dataset.PartitionedDataset
+  dataset:
+    type: kedro_datasets.pandas.csv_dataset.CSVDataset
+    load_args:
+      sep: ","
+  path: data/raw
+  filename_suffix: ".csv"
+
+clean_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/intermediate/clean_data.csv
+
+scaled_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/primary/scaled_data.csv
+
+train_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/model_input/train.csv
+
+val_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/model_input/val.csv
+
+test_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/model_input/test.csv
+
+baseline_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/reporting/baseline_model.pkl
+
+baseline_metrics:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/baseline_metrics.json
+
+automl_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/reporting/automl_model.pkl
+
+automl_results:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/reporting/automl_results.csv
+
+automl_metrics:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/automl_metrics.json
+
+model_comparison:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/model_comparison.json
+
+best_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/reporting/best_model.pkl
+
+evaluation_results:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/test_metrics.json
+
+evaluated_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/reporting/evaluated_model.pkl
+
+test_metrics:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/test_metrics.json
+
+feature_importances:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/reporting/feature_importances.json
+
+model_versions:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/06_reporting/model_versions.csv
+
+

@@ -1,0 +1,29 @@
+version: 1
+
+disable_existing_loggers: False
+
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+
+  rich:
+    class: kedro.logging.RichHandler
+    rich_tracebacks: True
+
+loggers:
+  kedro:
+    level: INFO
+
+  ai_project_prediction_of_real_estate_rental_prices:
+    level: INFO
+
+root:
+  handlers: [rich]
+  level: INFO
